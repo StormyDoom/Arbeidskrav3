@@ -17,11 +17,18 @@
 
             --En rekursiv funksjon er en funksjon som bruker seg selv til å løse et problem. Det jeg mener er at du bruker den samme funksjonen til å oppnå et mål eller resultat i koden din. En rekursiv funksjon kan brukes til å loope tilbake data, og bli brukt til å hente data. Det som kan være et problem med en rekursiv funksjon er at den kan bruke mye datakraft og hente inn for mye data.--
         */
-
         function numberSelector() {
-            
-    } 
-    document.getElementById("numberList").innerHTML = numberSelector
+            const randomNumber = Math.floor(Math.random()* 9) + 1;
+
+            document.getElementById("numberList").innerHTML += `${randomNumber}`;
+
+            if (randomNumber === 4 || randomNumber === 7){
+                return;
+            }
+
+            numberSelector(); 
+    }
+    numberSelector();
     </script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekursiv tallvelger</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #resultat {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rekursiv tallvelger</h1>
+  <button onclick="startVelging()">Start</button>
+  <div id="resultat"></div>
+
+  <script>
+    const tallListe = [];
+
+    function velgTall() {
+      const tilfeldigTall = Math.floor(Math.random() * 9) + 1;
+      tallListe.push(tilfeldigTall);
+
+      // Oppdater visning
+      document.getElementById("resultat").innerText = 
+        `Valgt tall: ${tilfeldigTall}\nTall i listen: ${tallListe.join(", ")}`;
+
+      // Stopp hvis tallet er 4 eller 7
+      if (tilfeldigTall === 4 || tilfeldigTall === 7) {
+        document.getElementById("resultat").innerText += "\nStoppet på 4 eller 7.";
+        return;
+      }
+
+      // Fortsett rekursivt med liten forsinkelse for synlighet
+      setTimeout(velgTall, 500);
+    }
+
+    function startVelging() {
+      tallListe.length = 0; // Nullstill listen
+      document.getElementById("resultat").innerText = "Starter...";
+      velgTall();
+    }
+  </script>
+</body>
+</html>
